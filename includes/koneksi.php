@@ -4,7 +4,7 @@ $port     = "5432";
 $dbname   = "postgres";
 $user     = "postgres.ngfrhcaovfqygargeyby";
 $password = "npg_gr3XPBodOKv8";
-
+$sslmode  = "require";
 
 
 $conn = pg_connect(
