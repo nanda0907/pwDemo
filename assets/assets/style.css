@@ -1,0 +1,150 @@
+/* =========================
+   TEMA GLOWTRACK (pink, di atas Bootstrap)
+   ========================= */
+:root {
+    --glow: #c76b8c;
+    --glow-dark: #a95172;
+    --glow-soft: #fbe8ef;
+
+    /* Ubah warna "primary" Bootstrap jadi pink */
+    --bs-primary: #c76b8c;
+    --bs-primary-rgb: 199, 107, 140;
+    --bs-link-color: #b45c7d;
+    --bs-link-hover-color: #a95172;
+}
+
+/* Matikan semua animasi & transisi */
+*, *::before, *::after {
+    transition: none !important;
+    animation: none !important;
+    scroll-behavior: auto !important;
+}
+
+/* Hilangkan shadow/glow saat tombol atau input diklik */
+.btn:focus,
+.btn:focus-visible,
+.btn:active:focus,
+.btn-check:focus + .btn,
+.form-control:focus,
+.form-select:focus,
+.navbar-toggler:focus,
+.btn-close:focus {
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+body {
+    background-color: #fff9fb;
+    color: #444;
+    font-size: 15px;
+}
+
+.text-glow      { color: var(--glow) !important; }
+.text-glow-dark { color: var(--glow-dark) !important; }
+
+/* Tombol primary pink */
+.btn-primary {
+    --bs-btn-bg: #c76b8c;
+    --bs-btn-border-color: #c76b8c;
+    --bs-btn-hover-bg: #a95172;
+    --bs-btn-hover-border-color: #a95172;
+    --bs-btn-active-bg: #954765;
+    --bs-btn-active-border-color: #954765;
+}
+
+/* Fokus form: cukup ganti warna garis */
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--glow);
+}
+
+/* Navbar */
+.navbar .nav-link.active {
+    font-weight: 700;
+}
+
+/* =========================
+   BERANDA
+   ========================= */
+.hero {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, #c76b8c 0%, #e59ab5 100%);
+    box-shadow: 0 10px 30px rgba(199, 107, 140, 0.25);
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    right: -60px;
+    top: -60px;
+    width: 260px;
+    height: 260px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.hero > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* Tombol di hero: putih polos, warnanya tidak berubah saat hover/klik */
+.btn-hero {
+    --bs-btn-color: #a95172;
+    --bs-btn-bg: #fff;
+    --bs-btn-border-color: #fff;
+    --bs-btn-hover-color: #a95172;
+    --bs-btn-hover-bg: #fff;
+    --bs-btn-hover-border-color: #fff;
+    --bs-btn-active-color: #a95172;
+    --bs-btn-active-bg: #fff;
+    --bs-btn-active-border-color: #fff;
+    font-weight: 600;
+}
+
+/* Kartu ringkasan */
+.stat-total { background: var(--glow-soft); }
+.stat-pagi  { background: #fff3cd; }
+.stat-malam { background: #e4e3fb; }
+
+.stat-number {
+    font-size: 1.9rem;
+    font-weight: 700;
+    color: var(--glow-dark);
+    line-height: 1.1;
+}
+
+/* =========================
+   TABEL
+   ========================= */
+.table thead th {
+    background-color: #f8e3eb;
+    color: #954765;
+    font-weight: 600;
+    border: 0;
+    white-space: nowrap;
+}
+
+.table thead th:first-child { border-top-left-radius: 8px; }
+.table thead th:last-child  { border-top-right-radius: 8px; }
+
+/* Modal hapus */
+.modal-icon {
+    width: 68px;
+    height: 68px;
+    border-radius: 50%;
+    background-color: #fde5e8;
+    color: #d9435b;
+    font-size: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Footer */
+.glow-footer {
+    background-color: #fff;
+    border-top: 1px solid #f0d5df;
+    color: #888;
+}

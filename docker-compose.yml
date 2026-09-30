@@ -1,0 +1,8 @@
+services:
+  web:
+    build: .
+    ports:
+      - "8282:8282"
+    volumes:
+      - .:/var/www/html
+    restart: unless-stopped
