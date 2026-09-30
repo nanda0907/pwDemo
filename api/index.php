@@ -1,5 +1,5 @@
 <?php
-$project_root = dirname(_DIR_);
+$project_root = dirname(__DIR__);
 $requested_path = $_GET['path'] ?? '';
 
 $relative_path = ltrim(parse_url($requested_path, PHP_URL_PATH) ?? '', '/');
