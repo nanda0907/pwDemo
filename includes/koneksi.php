@@ -15,5 +15,4 @@ if (!$conn) {
     die("Koneksi database gagal. Periksa host, username, password, dan sslmode.");
 }
 
-echo "Koneksi database berhasil!";
 ?>

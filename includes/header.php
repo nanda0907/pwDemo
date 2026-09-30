@@ -5,7 +5,7 @@ if (session_status() === PHP_SESSION_NONE) {
 
 $sudahLogin = isset($_SESSION['user_id']);
 
-$base = "/PEMOGRAMAN-WEB/skincare-routine/";
+$base = getenv('VERCEL') === '1' ? '/' : "/PEMOGRAMAN-WEB/skincare-routine/";
 
 // Menandai menu yang sedang aktif
 $current = basename($_SERVER['SCRIPT_NAME']);
