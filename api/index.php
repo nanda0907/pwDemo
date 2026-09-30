@@ -2,6 +2,38 @@
 $project_root = dirname(__DIR__);
 chdir($project_root);
 
+$requested_path = trim((string) parse_url($_GET['path'] ?? '', PHP_URL_PATH), '/');
+
+if ($requested_path !== '' && $requested_path !== 'index.php') {
+    $page_path = realpath($project_root . DIRECTORY_SEPARATOR . $requested_path);
+    $allowed_directories = [
+        $project_root . DIRECTORY_SEPARATOR . 'auth' . DIRECTORY_SEPARATOR,
+        $project_root . DIRECTORY_SEPARATOR . 'rutinitas' . DIRECTORY_SEPARATOR,
+    ];
+    $is_allowed_page = $page_path !== false
+        && strtolower(pathinfo($page_path, PATHINFO_EXTENSION)) === 'php';
+
+    if ($is_allowed_page) {
+        $is_allowed_page = false;
+        foreach ($allowed_directories as $directory) {
+            if (str_starts_with($page_path, $directory)) {
+                $is_allowed_page = true;
+                break;
+            }
+        }
+    }
+
+    if (!$is_allowed_page) {
+        http_response_code(404);
+        exit('Not Found');
+    }
+
+    chdir(dirname($page_path));
+    $_SERVER['SCRIPT_NAME'] = '/' . $requested_path;
+    require $page_path;
+    exit;
+}
+
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
