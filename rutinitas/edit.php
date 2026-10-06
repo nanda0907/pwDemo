@@ -2,7 +2,7 @@
 require_once "../includes/auth.php";
 require_once "../includes/koneksi.php";
 
-$id = (int)$_GET['id'];
+$id = (int)($_GET['id'] ?? 0);
 
 $query = pg_query_params(
     $conn,
@@ -21,6 +21,7 @@ $kategoriList = [
     "Moisturizer", "Sunscreen", "Lainnya"
 ];
 
+$page_title = "Edit Rutinitas";
 include "../includes/header.php";
 ?>
 
@@ -34,12 +35,12 @@ include "../includes/header.php";
                 </h2>
 
                 <form action="proses_edit.php" method="POST" class="needs-validation" novalidate>
-
-                    <input type="hidden" name="id" value="<?= $data['id'] ?>">
+                    <?= csrf_field() ?>
+                    <input type="hidden" name="id" value="<?= (int)$data['id'] ?>">
 
                     <div class="mb-3">
                         <label for="produk" class="form-label fw-semibold">Nama Produk</label>
-                        <input type="text" class="form-control" id="produk" name="produk" value="<?= htmlspecialchars($data['produk']) ?>" required>
+                        <input type="text" class="form-control" id="produk" name="produk" value="<?= e($data['produk']) ?>" required>
                         <div class="invalid-feedback">Nama produk harus diisi.</div>
                     </div>
 
@@ -48,9 +49,9 @@ include "../includes/header.php";
                             <label for="kategori" class="form-label fw-semibold">Kategori</label>
                             <select class="form-select" id="kategori" name="kategori" required>
                                 <?php foreach ($kategoriList as $kategori): ?>
-                                    <option value="<?= $kategori ?>"
-                                        <?= $data['kategori'] == $kategori ? 'selected' : '' ?>>
-                                        <?= $kategori ?>
+                                    <option value="<?= e($kategori) ?>"
+                                        <?= $data['kategori'] === $kategori ? 'selected' : '' ?>>
+                                        <?= e($kategori) ?>
                                     </option>
                                 <?php endforeach; ?>
                             </select>
@@ -60,9 +61,9 @@ include "../includes/header.php";
                             <label for="waktu" class="form-label fw-semibold">Waktu</label>
                             <select class="form-select" id="waktu" name="waktu" required>
                                 <option value="Pagi"
-                                    <?= $data['waktu'] == 'Pagi' ? 'selected' : '' ?>>Pagi</option>
+                                    <?= $data['waktu'] === 'Pagi' ? 'selected' : '' ?>>Pagi</option>
                                 <option value="Malam"
-                                    <?= $data['waktu'] == 'Malam' ? 'selected' : '' ?>>Malam</option>
+                                    <?= $data['waktu'] === 'Malam' ? 'selected' : '' ?>>Malam</option>
                             </select>
                         </div>
 
@@ -75,7 +76,7 @@ include "../includes/header.php";
 
                     <div class="mb-4">
                         <label for="catatan" class="form-label fw-semibold">Catatan</label>
-                        <textarea class="form-control" id="catatan" name="catatan" rows="3"><?= htmlspecialchars($data['catatan'] ?? '') ?></textarea>
+                        <textarea class="form-control" id="catatan" name="catatan" rows="3"><?= e($data['catatan']) ?></textarea>
                     </div>
 
                     <div class="d-flex justify-content-end gap-2">

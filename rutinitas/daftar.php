@@ -17,7 +17,6 @@ include "../includes/header.php";
         <h2 class="h3 fw-bold text-glow-dark mb-0">Daftar Rutinitas</h2>
         <p class="text-muted mb-0">Kelola semua produk skincare kamu di sini.</p>
     </div>
-    <!-- <a href="tambah.php" class="btn btn-primary rounded-pill px-4">+ Tambah Produk</a> -->
 </div>
 
 <div class="card border-0 shadow-sm rounded-4">
@@ -62,25 +61,21 @@ include "../includes/header.php";
                         <tr>
                             <td><?= $i + 1 ?></td>
 
-                            <td class="fw-semibold">
-                                <?= htmlspecialchars($row['produk']) ?>
-                            </td>
+                            <td class="fw-semibold"><?= e($row['produk']) ?></td>
 
-                            <td><?= htmlspecialchars($row['kategori']) ?></td>
+                            <td><?= e($row['kategori']) ?></td>
 
-                            <td><?= htmlspecialchars($row['waktu']) ?></td>
+                            <td><?= e($row['waktu']) ?></td>
 
                             <td class="text-center"><?= (int)$row['urutan'] ?></td>
 
-                            <td class="text-muted">
-                                <?= htmlspecialchars($row['catatan'] ?? '') ?>
-                            </td>
+                            <td class="text-muted"><?= e($row['catatan']) ?></td>
 
                             <td class="text-end text-nowrap">
                                 <a href="edit.php?id=<?= (int)$row['id'] ?>" class="btn btn-sm btn-outline-warning">Edit</a>
 
                                 <form method="POST" action="hapus.php" class="d-inline" onsubmit="return confirm('Yakin ingin menghapus data ini?');">
-
+                                    <?= csrf_field() ?>
                                     <input type="hidden" name="id" value="<?= (int)$row['id'] ?>">
                                     <button type="submit" class="btn btn-sm btn-outline-danger">Hapus</button>
                                 </form>

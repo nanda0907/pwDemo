@@ -19,6 +19,7 @@ include "../includes/header.php";
                 <h2 class="h4 fw-bold text-glow-dark mb-4">Login</h2>
 
                 <form action="proses_login.php" method="POST" class="needs-validation" novalidate>
+                    <?= csrf_field() ?>
 
                     <div class="mb-3">
                         <label for="username" class="form-label fw-semibold">Username</label>

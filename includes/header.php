@@ -3,6 +3,9 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
+require_once __DIR__ . '/helpers.php';
+require_once __DIR__ . '/csrf.php';
+
 $sudahLogin = isset($_SESSION['user_id']);
 
 $base = getenv('VERCEL') === '1' ? '/' : "/PEMOGRAMAN-WEB/skincare-routine/";
@@ -18,13 +21,13 @@ $isActive = function (array $pages) use ($current) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Glow<?= isset($page_title) ? ' | ' . $page_title : '' ?></title>
+    <title>Glow<?= isset($page_title) ? ' | ' . e($page_title) : '' ?></title>
 
     <!-- Bootstrap 5.3.3 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- CSS tema pink -->
-    <link rel="stylesheet" href="<?= $base ?>assets/assets/style.css?v=9">  
+    <link rel="stylesheet" href="<?= $base ?>assets/assets/style.css?v=9">
 </head>
 <body class="d-flex flex-column min-vh-100">
 
@@ -59,17 +62,12 @@ $isActive = function (array $pages) use ($current) {
                     </li>
 
                     <?php if ($sudahLogin): ?>
-                        <!-- <li class="nav-item">
-                            <a class="nav-link <?= $isActive(['tambah.php']) ?>"
-                               href="<?= $base ?>rutinitas/tambah.php">Tambah Rutinitas</a>
-                        </li> -->
-
-                        <!-- <li class="nav-item d-flex align-items-center">
+                        <li class="nav-item d-flex align-items-center">
                             <span class="navbar-text text-white ms-md-3 me-md-2">
-                                Hai, <?= htmlspecialchars($_SESSION['nama']) ?>
+                                Hai, <?= e($_SESSION['nama'] ?? '') ?>
                             </span>
-                        </li> -->
-                        
+                        </li>
+
                         <li class="nav-item">
                             <a class="nav-link" href="<?= $base ?>auth/logout.php">Logout</a>
                         </li>
@@ -91,7 +89,7 @@ $isActive = function (array $pages) use ($current) {
         <!-- Pesan notifikasi -->
         <?php if (isset($_SESSION['success'])): ?>
             <div class="alert alert-success alert-dismissible">
-                <?= htmlspecialchars($_SESSION['success']) ?>
+                <?= e($_SESSION['success']) ?>
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
             <?php unset($_SESSION['success']); ?>
@@ -99,7 +97,7 @@ $isActive = function (array $pages) use ($current) {
 
         <?php if (isset($_SESSION['error'])): ?>
             <div class="alert alert-danger alert-dismissible">
-                <?= htmlspecialchars($_SESSION['error']) ?>
+                <?= e($_SESSION['error']) ?>
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
             <?php unset($_SESSION['error']); ?>

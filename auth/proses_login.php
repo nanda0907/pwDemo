@@ -1,11 +1,14 @@
 <?php
 session_start();
+require_once "../includes/csrf.php";
 require_once "../includes/koneksi.php";
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     header("Location: login.php");
     exit;
 }
+
+csrf_verify();
 
 $username = trim($_POST['username'] ?? '');
 $password = $_POST['password'] ?? '';
@@ -18,7 +21,7 @@ $query = pg_query_params(
 $user = pg_fetch_assoc($query);
 
 if ($user && password_verify($password, $user['password'])) {
-    // Cegah session fixation
+    // Cegah session fixation: ganti ID sesi tepat setelah login berhasil
     session_regenerate_id(true);
 
     $_SESSION['user_id'] = $user['id'];

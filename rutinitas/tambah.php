@@ -1,5 +1,6 @@
 <?php
 require_once "../includes/auth.php";
+$page_title = "Tambah Rutinitas";
 include "../includes/header.php";
 ?>
 
@@ -11,6 +12,7 @@ include "../includes/header.php";
                 <h2 class="h4 fw-bold text-glow-dark mb-4">Tambah Rutinitas Skincare</h2>
 
                 <form action="proses_tambah.php" method="POST" class="needs-validation" novalidate>
+                    <?= csrf_field() ?>
 
                     <div class="mb-3">
                         <label for="produk" class="form-label fw-semibold">Nama Produk</label>

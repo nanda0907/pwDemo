@@ -1,5 +1,6 @@
 <?php
 require_once "../includes/auth.php";
+require_once "../includes/csrf.php";
 require_once "../includes/koneksi.php";
 
 // Hanya menerima POST (dari tombol Hapus di daftar.php)
@@ -7,6 +8,8 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     header("Location: daftar.php");
     exit;
 }
+
+csrf_verify();
 
 $id = (int)($_POST['id'] ?? 0);
 
@@ -24,4 +27,3 @@ if ($query) {
 
 header("Location: daftar.php");
 exit;
-?>

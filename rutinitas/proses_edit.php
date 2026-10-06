@@ -1,14 +1,25 @@
 <?php
 require_once "../includes/auth.php";
+require_once "../includes/csrf.php";
+require_once "../includes/helpers.php";
 require_once "../includes/koneksi.php";
 
-$id = (int)$_POST['id'];
+csrf_verify();
 
-$produk = $_POST['produk'];
-$kategori = $_POST['kategori'];
-$waktu = $_POST['waktu'];
-$urutan = (int)$_POST['urutan'];
-$catatan = $_POST['catatan'];
+$id = (int)($_POST['id'] ?? 0);
+[$data, $errors] = validasi_rutinitas($_POST);
+
+if ($id < 1) {
+    $_SESSION['error'] = "ID tidak valid.";
+    header("Location: daftar.php");
+    exit;
+}
+
+if ($errors) {
+    $_SESSION['error'] = implode(' ', $errors);
+    header("Location: edit.php?id=" . $id);
+    exit;
+}
 
 $query = pg_query_params(
     $conn,
@@ -19,7 +30,7 @@ $query = pg_query_params(
          urutan=$4,
          catatan=$5
      WHERE id=$6",
-    [$produk, $kategori, $waktu, $urutan, $catatan, $id]
+    [$data['produk'], $data['kategori'], $data['waktu'], $data['urutan'], $data['catatan'], $id]
 );
 
 if ($query) {
@@ -30,4 +41,3 @@ if ($query) {
 
 header("Location: daftar.php");
 exit;
-?>
