@@ -62,11 +62,11 @@ $isActive = function (array $pages) use ($current) {
                     </li>
 
                     <?php if ($sudahLogin): ?>
-                        <li class="nav-item d-flex align-items-center">
+                        <!-- <li class="nav-item d-flex align-items-center">
                             <span class="navbar-text text-white ms-md-3 me-md-2">
                                 Hai, <?= e($_SESSION['nama'] ?? '') ?>
                             </span>
-                        </li>
+                        </li> -->
 
                         <li class="nav-item">
                             <a class="nav-link" href="<?= $base ?>auth/logout.php">Logout</a>
