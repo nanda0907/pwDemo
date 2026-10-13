@@ -8,7 +8,7 @@ require_once __DIR__ . '/csrf.php';
 
 $sudahLogin = isset($_SESSION['user_id']);
 
-$base = getenv('VERCEL') === '1' ? '/' : "/PEMOGRAMAN-WEB/skincare-routine/";
+$base = getenv('VERCEL') === '1' ? '/' : "/demopw/skincare-routine/";
 
 // Menandai menu yang sedang aktif
 $current = basename($_SERVER['SCRIPT_NAME']);
