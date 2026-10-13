@@ -6,7 +6,7 @@
     --glow-dark: #a95172;
     --glow-soft: #fbe8ef;
 
-    /* Ubah warna "primary" Bootstrap jadi pink */
+    /* Mengubah warna primary bawaan Bootstrap menjadi pink */
     --bs-primary: #c76b8c;
     --bs-primary-rgb: 199, 107, 140;
     --bs-link-color: #b45c7d;
@@ -33,13 +33,17 @@
     outline: none !important;
 }
 
+/* Mengatur warna latar belakang, warna teks, dan ukuran
+   teks dasar untuk seluruh halaman website */
 body {
     background-color: #fff9fb;
     color: #444;
     font-size: 15px;
 }
 
+/* Class untuk memberikan warna teks pink utama */
 .text-glow      { color: var(--glow) !important; }
+/* Class untuk memberikan warna teks pink gelap */
 .text-glow-dark { color: var(--glow-dark) !important; }
 
 /* Tombol primary pink */
@@ -66,6 +70,7 @@ body {
 /* =========================
    BERANDA
    ========================= */
+   /* Mengatur banner utama dengan gradasi pink */
 .hero {
     position: relative;
     overflow: hidden;
@@ -73,6 +78,7 @@ body {
     box-shadow: 0 10px 30px rgba(199, 107, 140, 0.25);
 }
 
+/* Membuat lingkaran dekoratif transparan pada banner */
 .hero::after {
     content: "";
     position: absolute;
@@ -84,6 +90,7 @@ body {
     background: rgba(255, 255, 255, 0.15);
 }
 
+/* Menempatkan isi banner di atas lingkaran dekoratif */
 .hero > * {
     position: relative;
     z-index: 1;
@@ -108,6 +115,8 @@ body {
 .stat-pagi  { background: #fff3cd; }
 .stat-malam { background: #e4e3fb; }
 
+/* Mengatur ukuran, ketebalan, warna, dan tinggi baris
+   angka statistik pada kartu ringkasan */
 .stat-number {
     font-size: 1.9rem;
     font-weight: 700;
@@ -119,15 +128,16 @@ body {
    TABEL
    ========================= */
 .table thead th {
-    background-color: #f8e3eb;
-    color: #954765;
-    font-weight: 600;
-    border: 0;
-    white-space: nowrap;
+    background-color: #f8e3eb; /* Latar kepala tabel */
+    color: #954765;             /* Warna teks kepala tabel */
+    font-weight: 600;              
+    border: 0;                      /* Menghilangkan garis tepi */
+    white-space: nowrap;             /* Mencegah teks turun baris */
 }
 
+/* Membulatkan sudut kiri atas kepala tabel */
 .table thead th:first-child { border-top-left-radius: 8px; }
-.table thead th:last-child  { border-top-right-radius: 8px; }
+.table thead th:last-child  { border-top-right-radius: 8px; } /* Membulatkan sudut kanan atas kepala tabel */
 
 /* Modal hapus */
 .modal-icon {
