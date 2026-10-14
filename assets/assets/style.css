@@ -71,19 +71,13 @@ body {
    BERANDA
    ========================= */
    /* Mengatur banner utama dengan gradasi pink */
-.hero {
-    position: relative;
-    overflow: hidden;
-    background: linear-gradient(135deg, #f7045d 0%, #dc3471 100%);
-    box-shadow: 0 10px 30px rgba(6, 202, 45, 0.25);
-}
 
-/* .hero {
+.hero {
     position: relative;
     overflow: hidden;
     background: linear-gradient(135deg, #c76b8c 0%, #e59ab5 100%);
     box-shadow: 0 10px 30px rgba(199, 107, 140, 0.25);
-} */
+}
 
 /* Membuat lingkaran dekoratif transparan pada banner */
 .hero::after {
