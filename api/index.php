@@ -53,6 +53,10 @@ $malam = pg_fetch_assoc(
     pg_query($conn, "SELECT COUNT(*) AS total FROM rutinitas WHERE waktu='Malam'")
 );
 
+// $serum = pg_fetch_assoc(
+//     pg_query($conn, "SELECT COUNT(*) AS total FROM rutinitas WHERE kategori='Serum'")
+// );
+
 $page_title = "Beranda";
 include "includes/header.php";
 ?>
@@ -105,5 +109,15 @@ include "includes/header.php";
         </div>
     </div>
 </div>
+
+<!-- <div class="col-12 col-md-6 col-lg-3">
+    <div class="card stat-card stat-serum border-0 shadow-sm rounded-4 h-100">
+        <div class="card-body">
+            <div class="text-muted small">Total Serum</div>
+            <div class="stat-number"><?= $serum['total'] ?></div>
+        </div>
+    </div>
+</div> -->
+
 
 <?php include "includes/footer.php"; ?>
