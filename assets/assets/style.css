@@ -80,7 +80,7 @@ body {
 }
 
 /* Membuat lingkaran dekoratif transparan pada banner */
-/* .hero::after {
+.hero::after {
     content: "";
     position: absolute;
     right: -60px;
@@ -89,7 +89,7 @@ body {
     height: 260px;
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.15);
-} */
+}
 
 /* Menempatkan isi banner di atas lingkaran dekoratif */
 .hero > * {
