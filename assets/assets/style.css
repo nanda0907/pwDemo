@@ -74,9 +74,16 @@ body {
 .hero {
     position: relative;
     overflow: hidden;
-    background: linear-gradient(135deg, #c76b8c 0%, #e59ab5 100%);
+    background: linear-gradient(135deg, #c76b8c 0%, #dc3471 100%);
     box-shadow: 0 10px 30px rgba(199, 107, 140, 0.25);
 }
+
+/* .hero {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, #c76b8c 0%, #e59ab5 100%);
+    box-shadow: 0 10px 30px rgba(199, 107, 140, 0.25);
+} */
 
 /* Membuat lingkaran dekoratif transparan pada banner */
 .hero::after {
@@ -137,7 +144,7 @@ body {
 
 /* Membulatkan sudut kiri atas kepala tabel */
 .table thead th:first-child { border-top-left-radius: 8px; }
-.table thead th:last-child  { border-top-right-radius: 8px; } /* Membulatkan sudut kanan atas kepala tabel */
+.table thead th:last-child  { border-top-right-radius: 8px; } /* Membulatkan sudut kanan atas kepala tabel */ 
 
 /* Modal hapus */
 .modal-icon {
