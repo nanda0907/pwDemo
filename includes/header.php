@@ -78,6 +78,11 @@ $isActive = function (array $pages) use ($current) {
                         </li>
                     <?php endif; ?>
 
+                     <li class="nav-item">
+                        <a class="nav-link <?= $isActive(['uts.php']) ?>"
+                           href="<?= $base ?>uts/daftar.php">UTS</a>
+                    </li>
+
                 </ul>
             </div>
 
