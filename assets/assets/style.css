@@ -126,8 +126,7 @@ body {
 }
 
 /* =========================
-   TABEL
-   ========================= */
+   TABEL */
 .table thead th {
     background-color: #f8e3eb; /* Latar kepala tabel */
     color: #954765;             /* Warna teks kepala tabel */
