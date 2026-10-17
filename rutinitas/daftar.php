@@ -72,12 +72,12 @@ include "../includes/header.php";
                             <td class="text-muted"><?= e($row['catatan']) ?></td>
 
                             <td class="text-end text-nowrap">
-                                <a href="edit.php?id=<?= (int)$row['id'] ?>" class="btn btn-sm btn-outline-warning">Edit</a>
+                                <a href="edit.php?id=<?= (int)$row['id'] ?>" class="btn btn-sm btn-outline-warning btn-edit">Edit</a>
 
                                 <form method="POST" action="hapus.php" class="d-inline" onsubmit="return confirm('Yakin ingin menghapus data ini?');">
                                     <?= csrf_field() ?>
                                     <input type="hidden" name="id" value="<?= (int)$row['id'] ?>">
-                                    <button type="submit" class="btn btn-sm btn-outline-danger">Hapus</button>
+                                    <button type="submit" class="btn btn-sm btn-outline-danger btn-hapus">Hapus</button>
                                 </form>
                             </td>
                         </tr>
